@@ -1,5 +1,5 @@
 {% set name = "pulseaudio" %}
-{% set version = "14.0" %}
+{% set version = "14.1" %}
 
 package:
   name: {{ name|lower }}
@@ -7,10 +7,10 @@ package:
 
 source:
   url: https://www.freedesktop.org/software/pulseaudio/releases/pulseaudio-{{ version }}.tar.xz
-  sha256: a834775d9382b055504e5ee7625dc50768daac29329531deb6597bf05e06c261
+  sha256: b0bcca2a45e4fe1f73c7709dcf75a17dd5235688d5d150069e765dda4884b837
 
 build:
-  number: 1
+  number: 0
   skip: true  # [not linux]
   run_exports:
     - {{ pin_subpackage('pulseaudio', max_pin='x.x') }}
