@@ -1,8 +1,7 @@
-{% set name = "pulseaudio" %}
 {% set version = "16.1" %}
 
 package:
-  name: {{ name|lower }}
+  name: pulseaudio-split
   version: {{ version }}
 
 source:
@@ -13,76 +12,129 @@ source:
     - 0002-tests-Skip-tests-that-fail-for-release-build-when-pa.patch
 
 build:
-  number: 1
+  number: 2
   skip: true  # [not linux]
-  run_exports:
-    - {{ pin_subpackage('pulseaudio', max_pin='x.x') }}
-  ignore_run_exports_from:
-    - {{ compiler('cxx') }}
-    - zlib
 
-requirements:
-  build:
-    - {{ compiler('c') }}
-    - {{ compiler('cxx') }}
-    - gstreamer-orc
-    - m4
-    - meson
-    - ninja
-    - perl-xml-parser
-    - pkg-config
-  host:
-    - alsa-lib
-    - alsa-lib >=1.0.24
-    - check
-    - dbus
-    - dbus >=1.4.12
-    - fftw
-    - fftw >=3.0
-    - glib
-    - glib >=2.28.0
-    - gstreamer-orc
-    - jack
-    - libatomic_ops
-    - libatomic_ops >=1.2
-    - libcap
-    - libsndfile
-    - libsndfile >=1.0.20
-    - libsystemd
-    - libtool
-    - libtool >=2.4
-    - libudev
-    - openssl
-    - zlib
-  run:
-    - {{ pin_compatible('gstreamer-orc', max_pin='x.x') }}
-    - {{ pin_compatible('libtool', max_pin='x') }}
+outputs:
+  - name: pulseaudio
+    build:
+      run_exports:
+        - {{ pin_subpackage('pulseaudio', max_pin='x.x') }}
+    requirements:
+      build:
+        # Add these so the build string gets generated correctly
+        - {{ compiler('c') }}
+        - {{ compiler('cxx') }}
+      run:
+        - {{ pin_subpackage('pulseaudio-client', exact=True) }}
+        - {{ pin_subpackage('pulseaudio-daemon', exact=True) }}
 
-test:
-  requires:
-    - pkg-config
-  commands:
-    - test -f ${PREFIX}/include/pulse/version.h
-    - test -f ${PREFIX}/lib/libpulse.so
-    - test -f ${PREFIX}/lib/pkgconfig/libpulse.pc
-    - test -f `pkg-config --variable=modlibexecdir --dont-define-prefix libpulse`/libprotocol-native.so
-    - pa-info
-    - pacat --help
-    - pacmd --help
-    - pactl --help
-    - padsp -h
-    - pamon --version
-    - paplay --version
-    - parec --version
-    - parecord --version
-    - pasuspender --help
-    - pulseaudio --help
-
+  - name: pulseaudio-client
+    script: build-client.sh
+    build:
+      run_exports:
+        - {{ pin_subpackage('pulseaudio-client', max_pin='x.x') }}
+      ignore_run_exports_from:
+        - zlib
+    requirements:
+      build:
+        - {{ compiler('c') }}
+        - {{ compiler('cxx') }}
+        - m4
+        - meson
+        - ninja
+        - perl-xml-parser
+        - pkg-config
+      host:
+        - alsa-lib
+        - alsa-lib >=1.0.24
+        - check
+        - dbus
+        - dbus >=1.4.12
+        - glib
+        - glib >=2.28.0
+        - jack
+        - libatomic_ops
+        - libatomic_ops >=1.2
+        - libsndfile
+        - libsndfile >=1.0.20
+        - libsystemd
+        - zlib
+      run_constrained:
+        - {{ pin_subpackage('pulseaudio', exact=True) }}
+    test:
+      commands:
+        - test -f ${PREFIX}/include/pulse/version.h
+        - test -f ${PREFIX}/lib/libpulse.so
+        - test -f ${PREFIX}/lib/pkgconfig/libpulse.pc
+        - padsp -h
+  - name: pulseaudio-daemon
+    script: build-daemon.sh
+    build:
+      run_exports:
+        - {{ pin_subpackage('pulseaudio-daemon', max_pin='x.x') }}
+      ignore_run_exports_from:
+        - zlib
+    requirements:
+      build:
+        - {{ compiler('c') }}
+        - {{ compiler('cxx') }}
+        - gstreamer-orc
+        - m4
+        - meson
+        - ninja
+        - perl-xml-parser
+        - pkg-config
+      host:
+        - alsa-lib
+        - alsa-lib >=1.0.24
+        - check
+        - dbus
+        - dbus >=1.4.12
+        - fftw
+        - fftw >=3.0
+        - glib
+        - glib >=2.28.0
+        - gstreamer-orc
+        - jack
+        - libatomic_ops
+        - libatomic_ops >=1.2
+        - libcap
+        - libsndfile
+        - libsndfile >=1.0.20
+        - libsystemd
+        - libtool
+        - libtool >=2.4
+        - libudev
+        - openssl
+        - zlib
+        - {{ pin_subpackage('pulseaudio-client', exact=True) }}
+      run:
+        - {{ pin_compatible('gstreamer-orc', max_pin='x.x') }}
+        - {{ pin_compatible('libtool', max_pin='x') }}
+        - {{ pin_subpackage('pulseaudio-client', exact=True) }}
+      run_constrained:
+        - {{ pin_subpackage('pulseaudio', exact=True) }}
+    test:
+      requires:
+        - pkg-config
+      commands:
+        - test -f `pkg-config --variable=modlibexecdir --dont-define-prefix libpulse`/libprotocol-native.so
+        - pa-info
+        - pacat --help
+        - pacmd --help
+        - pactl --help
+        - pamon --version
+        - paplay --version
+        - parec --version
+        - parecord --version
+        - pasuspender --help
+        - pulseaudio --help
 
 about:
   home: https://www.freedesktop.org/wiki/Software/PulseAudio/
   license: LGPL-2.1-or-later
-  license_family: GPL
+  license_family: LGPL
   license_file: LGPL
   summary: A networked sound server
   doc_url: https://www.freedesktop.org/wiki/Software/PulseAudio/Documentation/
