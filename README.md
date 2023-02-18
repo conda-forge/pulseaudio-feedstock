@@ -1,5 +1,5 @@
-About pulseaudio
-================
+About pulseaudio-split
+======================
 
 Home: https://www.freedesktop.org/wiki/Software/PulseAudio/
 
@@ -29,45 +29,24 @@ Current build status
         <table>
           <thead><tr><th>Variant</th><th>Status</th></tr></thead>
           <tbody><tr>
-              <td>linux_64_openssl1.1.1</td>
+              <td>linux_64</td>
               <td>
                 <a href="https://dev.azure.com/conda-forge/feedstock-builds/_build/latest?definitionId=8429&branchName=main">
-                  <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/pulseaudio-feedstock?branchName=main&jobName=linux&configuration=linux%20linux_64_openssl1.1.1" alt="variant">
+                  <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/pulseaudio-feedstock?branchName=main&jobName=linux&configuration=linux%20linux_64_" alt="variant">
                 </a>
               </td>
             </tr><tr>
-              <td>linux_64_openssl3</td>
+              <td>linux_aarch64</td>
               <td>
                 <a href="https://dev.azure.com/conda-forge/feedstock-builds/_build/latest?definitionId=8429&branchName=main">
-                  <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/pulseaudio-feedstock?branchName=main&jobName=linux&configuration=linux%20linux_64_openssl3" alt="variant">
+                  <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/pulseaudio-feedstock?branchName=main&jobName=linux&configuration=linux%20linux_aarch64_" alt="variant">
                 </a>
               </td>
             </tr><tr>
-              <td>linux_aarch64_openssl1.1.1</td>
+              <td>linux_ppc64le</td>
               <td>
                 <a href="https://dev.azure.com/conda-forge/feedstock-builds/_build/latest?definitionId=8429&branchName=main">
-                  <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/pulseaudio-feedstock?branchName=main&jobName=linux&configuration=linux%20linux_aarch64_openssl1.1.1" alt="variant">
-                </a>
-              </td>
-            </tr><tr>
-              <td>linux_aarch64_openssl3</td>
-              <td>
-                <a href="https://dev.azure.com/conda-forge/feedstock-builds/_build/latest?definitionId=8429&branchName=main">
-                  <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/pulseaudio-feedstock?branchName=main&jobName=linux&configuration=linux%20linux_aarch64_openssl3" alt="variant">
-                </a>
-              </td>
-            </tr><tr>
-              <td>linux_ppc64le_openssl1.1.1</td>
-              <td>
-                <a href="https://dev.azure.com/conda-forge/feedstock-builds/_build/latest?definitionId=8429&branchName=main">
-                  <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/pulseaudio-feedstock?branchName=main&jobName=linux&configuration=linux%20linux_ppc64le_openssl1.1.1" alt="variant">
-                </a>
-              </td>
-            </tr><tr>
-              <td>linux_ppc64le_openssl3</td>
-              <td>
-                <a href="https://dev.azure.com/conda-forge/feedstock-builds/_build/latest?definitionId=8429&branchName=main">
-                  <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/pulseaudio-feedstock?branchName=main&jobName=linux&configuration=linux%20linux_ppc64le_openssl3" alt="variant">
+                  <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/pulseaudio-feedstock?branchName=main&jobName=linux&configuration=linux%20linux_ppc64le_" alt="variant">
                 </a>
               </td>
             </tr>
@@ -84,27 +63,29 @@ Current release info
 | Name | Downloads | Version | Platforms |
 | --- | --- | --- | --- |
 | [![Conda Recipe](https://img.shields.io/badge/recipe-pulseaudio-green.svg)](https://anaconda.org/conda-forge/pulseaudio) | [![Conda Downloads](https://img.shields.io/conda/dn/conda-forge/pulseaudio.svg)](https://anaconda.org/conda-forge/pulseaudio) | [![Conda Version](https://img.shields.io/conda/vn/conda-forge/pulseaudio.svg)](https://anaconda.org/conda-forge/pulseaudio) | [![Conda Platforms](https://img.shields.io/conda/pn/conda-forge/pulseaudio.svg)](https://anaconda.org/conda-forge/pulseaudio) |
+| [![Conda Recipe](https://img.shields.io/badge/recipe-pulseaudio--client-green.svg)](https://anaconda.org/conda-forge/pulseaudio-client) | [![Conda Downloads](https://img.shields.io/conda/dn/conda-forge/pulseaudio-client.svg)](https://anaconda.org/conda-forge/pulseaudio-client) | [![Conda Version](https://img.shields.io/conda/vn/conda-forge/pulseaudio-client.svg)](https://anaconda.org/conda-forge/pulseaudio-client) | [![Conda Platforms](https://img.shields.io/conda/pn/conda-forge/pulseaudio-client.svg)](https://anaconda.org/conda-forge/pulseaudio-client) |
+| [![Conda Recipe](https://img.shields.io/badge/recipe-pulseaudio--daemon-green.svg)](https://anaconda.org/conda-forge/pulseaudio-daemon) | [![Conda Downloads](https://img.shields.io/conda/dn/conda-forge/pulseaudio-daemon.svg)](https://anaconda.org/conda-forge/pulseaudio-daemon) | [![Conda Version](https://img.shields.io/conda/vn/conda-forge/pulseaudio-daemon.svg)](https://anaconda.org/conda-forge/pulseaudio-daemon) | [![Conda Platforms](https://img.shields.io/conda/pn/conda-forge/pulseaudio-daemon.svg)](https://anaconda.org/conda-forge/pulseaudio-daemon) |
 
-Installing pulseaudio
-=====================
+Installing pulseaudio-split
+===========================
 
-Installing `pulseaudio` from the `conda-forge` channel can be achieved by adding `conda-forge` to your channels with:
+Installing `pulseaudio-split` from the `conda-forge` channel can be achieved by adding `conda-forge` to your channels with:
 
 ```
 conda config --add channels conda-forge
 conda config --set channel_priority strict
 ```
 
-Once the `conda-forge` channel has been enabled, `pulseaudio` can be installed with `conda`:
+Once the `conda-forge` channel has been enabled, `pulseaudio, pulseaudio-client, pulseaudio-daemon` can be installed with `conda`:
 
 ```
-conda install pulseaudio
+conda install pulseaudio pulseaudio-client pulseaudio-daemon
 ```
 
 or with `mamba`:
 
 ```
-mamba install pulseaudio
+mamba install pulseaudio pulseaudio-client pulseaudio-daemon
 ```
 
 It is possible to list all of the versions of `pulseaudio` available on your platform with `conda`:
@@ -174,17 +155,17 @@ Terminology
                   produce the finished article (built conda distributions)
 
 
-Updating pulseaudio-feedstock
-=============================
+Updating pulseaudio-split-feedstock
+===================================
 
-If you would like to improve the pulseaudio recipe or build a new
+If you would like to improve the pulseaudio-split recipe or build a new
 package version, please fork this repository and submit a PR. Upon submission,
 your changes will be run on the appropriate platforms to give the reviewer an
 opportunity to confirm that the changes result in a successful build. Once
 merged, the recipe will be re-built and uploaded automatically to the
 `conda-forge` channel, whereupon the built conda packages will be available for
 everybody to install and use from the `conda-forge` channel.
-Note that all branches in the conda-forge/pulseaudio-feedstock are
+Note that all branches in the conda-forge/pulseaudio-split-feedstock are
 immediately built and any created packages are uploaded, so PRs should be based
 on branches in forks and branches in the main repository should only be used to
 build distinct package versions.
