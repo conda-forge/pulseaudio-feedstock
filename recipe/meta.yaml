@@ -46,14 +46,11 @@ outputs:
         - perl-xml-parser
         - pkg-config
       host:
-        - alsa-lib
-        - alsa-lib >=1.0.24
         - check
         - dbus
         - dbus >=1.4.12
         - glib
         - glib >=2.28.0
-        - jack
         - libatomic_ops
         - libatomic_ops >=1.2
         - libsndfile
