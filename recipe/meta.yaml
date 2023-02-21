@@ -65,6 +65,8 @@ outputs:
         - test -f ${PREFIX}/lib/libpulse.so
         - test -f ${PREFIX}/lib/pkgconfig/libpulse.pc
         - padsp -h
+        - pacat --help
+        - pactl --help
   - name: pulseaudio-daemon
     script: build-daemon.sh
     build:
@@ -118,9 +120,7 @@ outputs:
       commands:
         - test -f `pkg-config --variable=modlibexecdir --dont-define-prefix libpulse`/libprotocol-native.so
         - pa-info
-        - pacat --help
         - pacmd --help
-        - pactl --help
         - pamon --version
         - paplay --version
         - parec --version
