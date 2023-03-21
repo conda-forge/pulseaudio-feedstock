@@ -19,7 +19,7 @@ outputs:
   - name: pulseaudio
     build:
       run_exports:
-        - {{ pin_subpackage('pulseaudio', max_pin='x.x') }}
+        - {{ pin_subpackage('pulseaudio-client', max_pin='x.x') }}
     requirements:
       build:
         # Add these so the build string gets generated correctly
