@@ -99,6 +99,8 @@ outputs:
         - dbus >=1.4.12
         - fftw
         - fftw >=3.0
+        - glib
+        - glib >=2.28.0
         - gstreamer-orc
         - jack
         - libatomic_ops
