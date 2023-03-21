@@ -1,11 +1,34 @@
+About pulseaudio-split-feedstock
+================================
+
+Feedstock license: [BSD-3-Clause](https://github.com/conda-forge/pulseaudio-feedstock/blob/main/LICENSE.txt)
+
 About pulseaudio-split
-======================
+----------------------
 
 Home: https://www.freedesktop.org/wiki/Software/PulseAudio/
 
 Package license: LGPL-2.1-or-later
 
-Feedstock license: [BSD-3-Clause](https://github.com/conda-forge/pulseaudio-feedstock/blob/main/LICENSE.txt)
+Summary: A networked sound server
+
+Documentation: https://www.freedesktop.org/wiki/Software/PulseAudio/Documentation/
+About pulseaudio-client
+-----------------------
+
+Home: https://www.freedesktop.org/wiki/Software/PulseAudio/
+
+Package license: LGPL-2.1-or-later
+
+Summary: Client library for pulseaudio, a networked sound server
+
+Documentation: https://www.freedesktop.org/wiki/Software/PulseAudio/Documentation/
+About pulseaudio-daemon
+-----------------------
+
+Home: https://www.freedesktop.org/wiki/Software/PulseAudio/
+
+Package license: GPL-2.0-or-later
 
 Summary: A networked sound server
 
