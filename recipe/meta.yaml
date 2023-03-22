@@ -159,6 +159,7 @@ about:
   doc_url: https://www.freedesktop.org/wiki/Software/PulseAudio/Documentation/
 
 extra:
+  feedstock-name: pulseaudio
   recipe-maintainers:
     - andfoy
     - ryanvolz
