@@ -12,7 +12,7 @@ source:
     - 0002-tests-Skip-tests-that-fail-for-release-build-when-pa.patch
 
 build:
-  number: 2
+  number: 3
   skip: true  # [not linux]
 
 outputs:
@@ -20,6 +20,8 @@ outputs:
     build:
       run_exports:
         - {{ pin_subpackage('pulseaudio-client', max_pin='x.x') }}
+      ignore_run_exports_from:
+        - {{ compiler('cxx') }}
     requirements:
       build:
         # Add these so the build string gets generated correctly
@@ -28,6 +30,10 @@ outputs:
       run:
         - {{ pin_subpackage('pulseaudio-client', exact=True) }}
         - {{ pin_subpackage('pulseaudio-daemon', exact=True) }}
+    test:
+      commands:
+        - pactl --help
+        - pulseaudio --help
 
   - name: pulseaudio-client
     script: build-client.sh
@@ -35,6 +41,7 @@ outputs:
       run_exports:
         - {{ pin_subpackage('pulseaudio-client', max_pin='x.x') }}
       ignore_run_exports_from:
+        - {{ compiler('cxx') }}
         - zlib
     requirements:
       build:
@@ -80,6 +87,7 @@ outputs:
       run_exports:
         - {{ pin_subpackage('pulseaudio-daemon', max_pin='x.x') }}
       ignore_run_exports_from:
+        - {{ compiler('cxx') }}
         - zlib
     requirements:
       build:
