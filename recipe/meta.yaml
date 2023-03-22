@@ -16,25 +16,6 @@ build:
   skip: true  # [not linux]
 
 outputs:
-  - name: pulseaudio
-    build:
-      run_exports:
-        - {{ pin_subpackage('pulseaudio-client', max_pin='x.x') }}
-      ignore_run_exports_from:
-        - {{ compiler('cxx') }}
-    requirements:
-      build:
-        # Add these so the build string gets generated correctly
-        - {{ compiler('c') }}
-        - {{ compiler('cxx') }}
-      run:
-        - {{ pin_subpackage('pulseaudio-client', exact=True) }}
-        - {{ pin_subpackage('pulseaudio-daemon', exact=True) }}
-    test:
-      commands:
-        - pactl --help
-        - pulseaudio --help
-
   - name: pulseaudio-client
     script: build-client.sh
     build:
@@ -149,6 +130,24 @@ outputs:
       license_file: GPL
       summary: A networked sound server
       doc_url: https://www.freedesktop.org/wiki/Software/PulseAudio/Documentation/
+  - name: pulseaudio
+    build:
+      run_exports:
+        - {{ pin_subpackage('pulseaudio-client', max_pin='x.x') }}
+      ignore_run_exports_from:
+        - {{ compiler('cxx') }}
+    requirements:
+      build:
+        # Add these so the build string gets generated correctly
+        - {{ compiler('c') }}
+        - {{ compiler('cxx') }}
+      run:
+        - {{ pin_subpackage('pulseaudio-client', exact=True) }}
+        - {{ pin_subpackage('pulseaudio-daemon', exact=True) }}
+    test:
+      commands:
+        - pactl --help
+        - pulseaudio --help
 
 about:
   home: https://www.freedesktop.org/wiki/Software/PulseAudio/
