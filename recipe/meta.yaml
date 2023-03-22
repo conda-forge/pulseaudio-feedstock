@@ -46,7 +46,7 @@ outputs:
         - libsystemd
         - zlib
       run_constrained:
-        - {{ pin_subpackage('pulseaudio', exact=True) }}
+        - pulseaudio {{ version }} *_{{ PKG_BUILD }}
     test:
       commands:
         - test -f ${PREFIX}/include/pulse/version.h
@@ -109,7 +109,7 @@ outputs:
         - {{ pin_compatible('libtool', max_pin='x') }}
         - {{ pin_subpackage('pulseaudio-client', exact=True) }}
       run_constrained:
-        - {{ pin_subpackage('pulseaudio', exact=True) }}
+        - pulseaudio {{ version }} *_{{ PKG_BUILD }}
     test:
       requires:
         - pkg-config
