@@ -1,5 +1,5 @@
-{% set version = "16.1" %}
-{% set build = 5 %}
+{% set version = "17.0" %}
+{% set build = 0 %}
 
 package:
   name: pulseaudio-split
@@ -7,7 +7,7 @@ package:
 
 source:
   url: https://www.freedesktop.org/software/pulseaudio/releases/pulseaudio-{{ version }}.tar.xz
-  sha256: 8eef32ce91d47979f95fd9a935e738cd7eb7463430dabc72863251751e504ae4
+  sha256: 053794d6671a3e397d849e478a80b82a63cb9d8ca296bd35b73317bb5ceb87b5
   patches:
     - 0001-pulsecore-static_assert-_Static_assert-for-glibc-2.1.patch
     - 0002-tests-Skip-tests-that-fail-for-release-build-when-pa.patch
