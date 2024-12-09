@@ -46,6 +46,7 @@ outputs:
         - libsndfile
         - libsndfile >=1.0.20
         - libsystemd
+        - libsystemd0 256.7
         - zlib
       run_constrained:
         - pulseaudio {{ version }} *_{{ build }}
@@ -97,6 +98,7 @@ outputs:
         - jack
         - libatomic_ops
         - libatomic_ops >=1.2
+        - libsystemd0 256.7
         - libcap 2.69
         - libsndfile
         - libsndfile >=1.0.20
