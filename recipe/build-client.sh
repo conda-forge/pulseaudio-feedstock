@@ -6,7 +6,6 @@ if [[ $target_platform == linux-64 ]] ; then
 fi
 
 meson_config_args=(
-    --buildtype=release
     -D libdir=lib
     -Dclient=true
     -Ddaemon=false
