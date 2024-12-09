@@ -29,6 +29,7 @@ outputs:
       build:
         - {{ compiler('c') }}
         - {{ compiler('cxx') }}
+        - {{ stdlib('c') }}
         - m4
         - meson
         - ninja
@@ -75,6 +76,7 @@ outputs:
       build:
         - {{ compiler('c') }}
         - {{ compiler('cxx') }}
+        - {{ stdlib('c') }}
         - gstreamer-orc
         - m4
         - meson
@@ -95,7 +97,7 @@ outputs:
         - jack
         - libatomic_ops
         - libatomic_ops >=1.2
-        - libcap
+        - libcap 2.69
         - libsndfile
         - libsndfile >=1.0.20
         - libsystemd
@@ -142,6 +144,7 @@ outputs:
         # Add these so the build string gets generated correctly
         - {{ compiler('c') }}
         - {{ compiler('cxx') }}
+        - {{ stdlib('c') }}
       run:
         - {{ pin_subpackage('pulseaudio-client', exact=True) }}
         - {{ pin_subpackage('pulseaudio-daemon', exact=True) }}
