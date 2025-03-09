@@ -47,7 +47,7 @@ outputs:
         - libsndfile
         - libsndfile >=1.0.20
         - libsystemd
-        - libx11
+        - xorg-libx11
         - zlib
       run_constrained:
         - pulseaudio {{ version }} *_{{ build }}
@@ -106,8 +106,8 @@ outputs:
         - libtool
         - libtool >=2.4
         - libudev
-        - libx11
         - openssl
+        - xorg-libx11
         - zlib
         - {{ pin_subpackage('pulseaudio-client', exact=True) }}
       run:
