@@ -1,5 +1,5 @@
 {% set version = "17.0" %}
-{% set build = 0 %}
+{% set build = 1 %}
 
 package:
   name: pulseaudio-split
@@ -9,8 +9,7 @@ source:
   url: https://www.freedesktop.org/software/pulseaudio/releases/pulseaudio-{{ version }}.tar.xz
   sha256: 053794d6671a3e397d849e478a80b82a63cb9d8ca296bd35b73317bb5ceb87b5
   patches:
-    - 0001-pulsecore-static_assert-_Static_assert-for-glibc-2.1.patch
-    - 0002-tests-Skip-tests-that-fail-for-release-build-when-pa.patch
+    - 0001-tests-Skip-tests-that-fail-for-release-build-when-pa.patch
 
 build:
   number: {{ build }}
@@ -28,6 +27,7 @@ outputs:
     requirements:
       build:
         - {{ compiler('c') }}
+        - {{ stdlib('c') }}
         - {{ compiler('cxx') }}
         - m4
         - meson
@@ -74,6 +74,7 @@ outputs:
     requirements:
       build:
         - {{ compiler('c') }}
+        - {{ stdlib('c') }}
         - {{ compiler('cxx') }}
         - gstreamer-orc
         - m4
@@ -141,6 +142,7 @@ outputs:
       build:
         # Add these so the build string gets generated correctly
         - {{ compiler('c') }}
+        - {{ stdlib('c') }}
         - {{ compiler('cxx') }}
       run:
         - {{ pin_subpackage('pulseaudio-client', exact=True) }}
