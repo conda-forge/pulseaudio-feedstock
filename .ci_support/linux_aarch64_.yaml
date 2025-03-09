@@ -28,6 +28,10 @@ glib:
 - '2'
 gstreamer:
 - '1.24'
+libcap:
+- '2.71'
+libiconv:
+- '1'
 libsndfile:
 - '1.2'
 openssl:
