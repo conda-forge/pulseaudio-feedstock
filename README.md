@@ -207,6 +207,7 @@ Feedstock Maintainers
 =====================
 
 * [@andfoy](https://github.com/andfoy/)
+* [@ehfd](https://github.com/ehfd/)
 * [@ryanvolz](https://github.com/ryanvolz/)
 * [@scopatz](https://github.com/scopatz/)
 
