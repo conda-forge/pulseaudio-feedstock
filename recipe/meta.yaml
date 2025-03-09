@@ -107,7 +107,11 @@ outputs:
         - libtool >=2.4
         - libudev
         - openssl
+        - libxcb
         - xorg-libx11
+        - xorg-libice
+        - xorg-libsm
+        - xorg-libxtst
         - zlib
         - {{ pin_subpackage('pulseaudio-client', exact=True) }}
       run:
