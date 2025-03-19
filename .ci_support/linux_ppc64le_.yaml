@@ -29,9 +29,13 @@ glib:
 gstreamer:
 - '1.24'
 libcap:
-- '2.71'
+- '2.75'
+libiconv:
+- '1'
 libsndfile:
 - '1.2'
+libxcb:
+- '1'
 openssl:
 - '3'
 pulseaudio:
