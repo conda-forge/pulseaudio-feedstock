@@ -96,6 +96,7 @@ outputs:
         - jack
         - libcap
         - libiconv
+        - libltdl
         - libsndfile
         - libsndfile >=1.0.20
         - libsystemd
