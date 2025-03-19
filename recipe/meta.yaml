@@ -70,6 +70,7 @@ outputs:
         - {{ pin_subpackage('pulseaudio-daemon', max_pin='x.x') }}
       ignore_run_exports_from:
         - {{ compiler('cxx') }}
+        - glib
         - zlib
     requirements:
       build:
