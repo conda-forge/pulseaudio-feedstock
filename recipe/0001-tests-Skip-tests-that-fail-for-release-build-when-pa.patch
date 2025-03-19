@@ -1,4 +1,3 @@
-From 0000000000000000000000000000000000000000 Mon Sep 17 00:00:00 2001
 From: Ryan Volz <ryan.volz@gmail.com>
 Date: Wed, 26 Oct 2022 14:58:59 -0400
 Subject: [PATCH] tests: Skip tests that fail for release build when pa_assert

@@ -10,6 +10,7 @@ source:
   sha256: 053794d6671a3e397d849e478a80b82a63cb9d8ca296bd35b73317bb5ceb87b5
   patches:
     - 0001-tests-Skip-tests-that-fail-for-release-build-when-pa.patch
+    - 0002-libiconv.patch
 
 build:
   number: {{ build }}
@@ -44,6 +45,7 @@ outputs:
         - glib >=2.28.0
         - libatomic_ops
         - libatomic_ops >=1.2
+        - libiconv
         - libsndfile
         - libsndfile >=1.0.20
         - libsystemd
@@ -100,6 +102,7 @@ outputs:
         - libatomic_ops
         - libatomic_ops >=1.2
         - libcap
+        - libiconv
         - libsndfile
         - libsndfile >=1.0.20
         - libsystemd
