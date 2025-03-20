@@ -24,6 +24,8 @@ outputs:
         - {{ pin_subpackage('pulseaudio-client', max_pin='x.x') }}
       ignore_run_exports_from:
         - {{ compiler('cxx') }}
+        - fftw
+        - xorg-libx11
         - zlib
     requirements:
       build:
@@ -47,6 +49,7 @@ outputs:
         - libsndfile
         - libsndfile >=1.0.20
         - libsystemd
+        - libxcb
         - xorg-libx11
         - xorg-xorgproto
         - zlib
@@ -75,6 +78,7 @@ outputs:
       ignore_run_exports_from:
         - {{ compiler('cxx') }}
         - glib
+        - xorg-libx11
         - zlib
     requirements:
       build:
@@ -110,6 +114,7 @@ outputs:
         - openssl
         - soxr
         - speex
+        - libxcb
         - xorg-libx11
         - xorg-xorgproto
         - zlib
