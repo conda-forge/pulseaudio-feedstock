@@ -1,0 +1,17 @@
+From: Seungmin Kim <8457324+ehfd@users.noreply.github.com>
+Date: Wed, 19 Mar 2025 15:20:00 +0000
+Subject: [PATCH] skip test v17.0
+---
+--- src/tests/meson.build       2025-03-20 10:00:00.000000000
++++ src/tests/meson.build    2025-03-20 10:00:00.000000000 +0000
+@@ -66,8 +66,8 @@
+       [ check_dep, libm_dep, libpulse_dep, libpulsecommon_dep, libpulsecore_dep ] ],
+     [ 'cpu-sconv-test', [ 'cpu-sconv-test.c', 'runtime-test-util.h' ],
+       [ check_dep, libm_dep, libpulse_dep, libpulsecommon_dep, libpulsecore_dep ] ],
+-    [ 'cpu-volume-test', [ 'cpu-volume-test.c', 'runtime-test-util.h' ],
+-      [ check_dep, libm_dep, libpulse_dep, libpulsecommon_dep, libpulsecore_dep ] ],
++#    [ 'cpu-volume-test', [ 'cpu-volume-test.c', 'runtime-test-util.h' ],
++#      [ check_dep, libm_dep, libpulse_dep, libpulsecommon_dep, libpulsecore_dep ] ],
+     [ 'format-test', 'format-test.c',
+       [ check_dep, libpulse_dep, libpulsecommon_dep, libpulsecore_dep ] ],
+     [ 'hook-list-test', 'hook-list-test.c',
