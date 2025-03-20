@@ -105,7 +105,6 @@ outputs:
         - jack
         - libcap
         - libltdl
-        - libsamplerate
         - libsndfile
         - libsndfile >=1.0.20
         - libsystemd
