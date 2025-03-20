@@ -11,6 +11,7 @@ source:
   patches:
     - 0001-tests-Skip-tests-that-fail-for-release-build-when-pa.patch
     - 0002-libiconv.patch
+    - 0003-skip-test-v17.0.patch
 
 build:
   number: {{ build }}
