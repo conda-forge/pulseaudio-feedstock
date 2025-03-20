@@ -105,6 +105,7 @@ outputs:
         - jack
         - libcap
         - libltdl
+        - libsamplerate
         - libsndfile
         - libsndfile >=1.0.20
         - libsystemd
@@ -113,7 +114,6 @@ outputs:
         - libudev
         - openssl
         - soxr
-        - speex
         - libxcb
         - xorg-libx11
         - xorg-libice
