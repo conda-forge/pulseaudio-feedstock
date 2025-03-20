@@ -117,6 +117,9 @@ outputs:
         - speex
         - libxcb
         - xorg-libx11
+        - xorg-libice
+        - xorg-libsm
+        - xorg-libxtst
         - xorg-xorgproto
         - zlib
         - {{ pin_subpackage('pulseaudio-client', exact=True) }}
