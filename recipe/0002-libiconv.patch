@@ -1,0 +1,31 @@
+From: Seungmin Kim <8457324+ehfd@users.noreply.github.com>
+Date: Wed, 19 Mar 2025 15:20:00 +0000
+Subject: [PATCH] libiconv
+---
+--- meson.build 2025-03-19 15:20:00.000000000 +0000
++++ meson.build 2025-03-19 15:20:00.000000000 +0000
+@@ -474,15 +474,15 @@
+ endif
+ 
+ have_iconv = false
+-if cc.has_function('iconv_open')
+-  iconv_dep = dependency('', required : false)
+-  have_iconv = true
+-  # tell the libiconv header to pretend to be libc iconv
+-  cdata.set('LIBICONV_PLUG', 1)
+-else
+-  iconv_dep = cc.find_library('iconv', required : false)
+-  have_iconv = iconv_dep.found()
+-endif
++#if cc.has_function('iconv_open')
++#  iconv_dep = dependency('', required : false)
++#  have_iconv = true
++#  # tell the libiconv header to pretend to be libc iconv
++#  cdata.set('LIBICONV_PLUG', 1)
++#else
++iconv_dep = cc.find_library('iconv', required : false)
++have_iconv = iconv_dep.found()
++#endif
+ if have_iconv
+   cdata.set('HAVE_ICONV', 1)
+   iconvconsttest = '''#include <iconv.h>

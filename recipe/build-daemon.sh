@@ -1,20 +1,12 @@
 #!/usr/bin/env bash
 
-# need to link with librt for sysroot_linux-64 < 2.17 for clock_gettime
-if [[ $target_platform == linux-64 ]] ; then
-    export LDFLAGS="$LDFLAGS -lrt"
-fi
-
 meson_config_args=(
-    --buildtype=release
-    -D libdir=lib
     -Dclient=false
     -Ddaemon=true
-    --prefix=${PREFIX}
     --wrap-mode=nodownload
-    -D database=simple
-    -D doxygen=false
-    -D udevrulesdir=${PREFIX}/lib/udev/rules.d
+    -Ddatabase=simple
+    -Ddoxygen=false
+    -Dudevrulesdir=${PREFIX}/lib/udev/rules.d
 )
 
 # MESON_ARGS is set by conda compiler activation script

@@ -1,0 +1,28 @@
+From: Ryan Volz <ryan.volz@gmail.com>
+Date: Wed, 26 Oct 2022 14:58:59 -0400
+Subject: [PATCH] tests: Skip tests that fail for release build when pa_assert
+ is a no-op.
+
+---
+ src/tests/core-util-test.c | 2 ++
+ 1 file changed, 2 insertions(+)
+
+diff --git a/src/tests/core-util-test.c b/src/tests/core-util-test.c
+index 49aa4abcc..fae456ffc 100644
+--- a/src/tests/core-util-test.c
++++ b/src/tests/core-util-test.c
+@@ -334,10 +334,12 @@ int main(int argc, char *argv[]) {
+     tcase_add_test(tc, test_atoi64);
+     tcase_add_test(tc, test_atod);
+     tcase_add_test(tc, test_replace);
++#ifndef NDEBUG
+     tcase_add_test_raise_signal(tc, test_replace_fail_1, SIGABRT);
+     tcase_add_test_raise_signal(tc, test_replace_fail_2, SIGABRT);
+     tcase_add_test_raise_signal(tc, test_replace_fail_3, SIGABRT);
+     tcase_add_test_raise_signal(tc, test_replace_fail_4, SIGABRT);
++#endif
+     tcase_add_test(tc, test_escape);
+     tcase_add_test(tc, test_unescape);
+ 
+-- 
+2.37.3

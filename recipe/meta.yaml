@@ -1,5 +1,5 @@
 {% set version = "17.0" %}
-{% set build = 0 %}
+{% set build = 1 %}
 
 package:
   name: pulseaudio-split
@@ -9,8 +9,9 @@ source:
   url: https://www.freedesktop.org/software/pulseaudio/releases/pulseaudio-{{ version }}.tar.xz
   sha256: 053794d6671a3e397d849e478a80b82a63cb9d8ca296bd35b73317bb5ceb87b5
   patches:
-    - 0001-pulsecore-static_assert-_Static_assert-for-glibc-2.1.patch
-    - 0002-tests-Skip-tests-that-fail-for-release-build-when-pa.patch
+    - 0001-tests-Skip-tests-that-fail-for-release-build-when-pa.patch
+    - 0002-libiconv.patch
+    - 0003-tests-Don-t-run-volume-tests-with-impossible-alignme.patch
 
 build:
   number: {{ build }}
@@ -24,10 +25,13 @@ outputs:
         - {{ pin_subpackage('pulseaudio-client', max_pin='x.x') }}
       ignore_run_exports_from:
         - {{ compiler('cxx') }}
+        - fftw
+        - xorg-libx11
         - zlib
     requirements:
       build:
         - {{ compiler('c') }}
+        - {{ stdlib('c') }}
         - {{ compiler('cxx') }}
         - m4
         - meson
@@ -38,13 +42,17 @@ outputs:
         - check
         - dbus
         - dbus >=1.4.12
+        - fftw
+        - fftw >=3.0
         - glib
         - glib >=2.28.0
-        - libatomic_ops
-        - libatomic_ops >=1.2
+        - libiconv
         - libsndfile
         - libsndfile >=1.0.20
         - libsystemd
+        - libxcb
+        - xorg-libx11
+        - xorg-xorgproto
         - zlib
       run_constrained:
         - pulseaudio {{ version }} *_{{ build }}
@@ -70,10 +78,12 @@ outputs:
         - {{ pin_subpackage('pulseaudio-daemon', max_pin='x.x') }}
       ignore_run_exports_from:
         - {{ compiler('cxx') }}
+        - glib
         - zlib
     requirements:
       build:
         - {{ compiler('c') }}
+        - {{ stdlib('c') }}
         - {{ compiler('cxx') }}
         - gstreamer-orc
         - m4
@@ -93,9 +103,8 @@ outputs:
         - glib >=2.28.0
         - gstreamer-orc
         - jack
-        - libatomic_ops
-        - libatomic_ops >=1.2
         - libcap
+        - libltdl
         - libsndfile
         - libsndfile >=1.0.20
         - libsystemd
@@ -103,6 +112,13 @@ outputs:
         - libtool >=2.4
         - libudev
         - openssl
+        - soxr
+        - libxcb
+        - xorg-libx11
+        - xorg-libice
+        - xorg-libsm
+        - xorg-libxtst
+        - xorg-xorgproto
         - zlib
         - {{ pin_subpackage('pulseaudio-client', exact=True) }}
       run:
@@ -141,6 +157,7 @@ outputs:
       build:
         # Add these so the build string gets generated correctly
         - {{ compiler('c') }}
+        - {{ stdlib('c') }}
         - {{ compiler('cxx') }}
       run:
         - {{ pin_subpackage('pulseaudio-client', exact=True) }}
@@ -164,3 +181,4 @@ extra:
     - andfoy
     - ryanvolz
     - scopatz
+    - ehfd
