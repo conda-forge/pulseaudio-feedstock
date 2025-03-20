@@ -39,12 +39,16 @@ outputs:
         - check
         - dbus
         - dbus >=1.4.12
+        - fftw
+        - fftw >=3.0
         - glib
         - glib >=2.28.0
         - libiconv
         - libsndfile
         - libsndfile >=1.0.20
         - libsystemd
+        - xorg-libx11
+        - xorg-xorgproto
         - zlib
       run_constrained:
         - pulseaudio {{ version }} *_{{ build }}
@@ -104,6 +108,10 @@ outputs:
         - libtool >=2.4
         - libudev
         - openssl
+        - soxr
+        - speex
+        - xorg-libx11
+        - xorg-xorgproto
         - zlib
         - {{ pin_subpackage('pulseaudio-client', exact=True) }}
       run:
