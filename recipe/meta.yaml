@@ -3,7 +3,7 @@
 
 package:
   name: pulseaudio-split
-  version: {{ version }}
+  version: "{{ version }}"
 
 source:
   url: https://www.freedesktop.org/software/pulseaudio/releases/pulseaudio-{{ version }}.tar.xz
